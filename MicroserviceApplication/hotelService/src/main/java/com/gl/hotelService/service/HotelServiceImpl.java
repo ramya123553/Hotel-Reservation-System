@@ -1,0 +1,69 @@
+package com.gl.hotelService.service;
+
+import java.util.ArrayList;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
+
+import com.gl.hotelService.bean.Hotel;
+import com.gl.hotelService.bean.HotelDTO;
+import com.gl.hotelService.dao.HotelDao;
+import com.gl.hotelService.dao.HotelRepository;
+
+
+@Repository
+@Service
+public class HotelServiceImpl implements HotelService {
+
+	 @Autowired
+	 private HotelDao hotelDao;
+	 @Autowired
+	 private HotelRepository repository;
+
+ @Override
+ public void save(HotelDTO hotelDTO) {
+	 Hotel hotel = new Hotel(hotelDTO);
+	 hotelDao.save(hotel);
+ }
+
+ @Override
+ public void delete(String id) {
+	 hotelDao.delete(id);
+ }
+
+ @Override
+ public List<HotelDTO> findAll() {
+	 List<HotelDTO> hotelList = new ArrayList<>();
+	 for(Hotel hotel:hotelDao.findAllHotels()) {
+	  HotelDTO hotelDTO=new HotelDTO(hotel);
+	  hotelList.add(hotelDTO);
+	 }
+	 return hotelList;
+ }
+
+ @Override
+ public HotelDTO findById(String id) {
+	 return new HotelDTO(hotelDao.findHotelById(id));
+
+ }
+ @Override
+ public String GenerateHotelId(){
+ 
+			// TODO Auto-generated method stub
+	 String val=repository.findMaxHotelId();
+		int value;
+		if(val==null)
+		{
+			value=1;
+		}
+		else
+		{
+			value=Integer.parseInt(val.substring(1))+1;
+			
+		}
+		String s="H"+String.valueOf(value);
+		return s;
+		}
+ 
+}

@@ -1,0 +1,46 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" isELIgnored="false"%>
+     <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div align="center">
+<h3>
+<h1 style="color:red">
+<u><i>Rooms List</i></u>
+</h1>
+<br/>
+<a href="/room-addition">Add Room</a>
+ <table border="2">
+ <tr>
+    <th>Hotel Id</th>
+    <th>Room Type</th>
+    <th>Room Id</th>
+    <th>Room Status</th>
+    <th>Action</th>
+    </tr>
+    <c:forEach items="${roomList}" var="room">
+      <tr>
+      <td>${room.hotelId}</td>
+      <td>${room.roomType}</td>
+      <td>${room.roomId}</td>
+      <td>${room.roomStatus}</td>
+      
+      <td><h3>
+      
+      &nbsp;&nbsp;<a href="room-delete/${room.roomId}">Delete</a> 
+      
+      </h3></td>
+       
+      </tr>
+     </c:forEach>
+  </table>
+</h2>
+<a href="/index">Return</a>
+</div>
+</body>
+</html>

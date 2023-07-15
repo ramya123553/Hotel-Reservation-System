@@ -1,0 +1,16 @@
+package com.gl.hotelService.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.gl.hotelService.bean.Accomodation;
+
+
+@Repository
+public interface AccomodationRepository extends JpaRepository<Accomodation, String> {
+
+	@Query("select max(id) from Accomodation") 
+	public String findMaxAccId();
+	
+}

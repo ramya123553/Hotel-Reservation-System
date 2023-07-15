@@ -1,0 +1,5 @@
+package com.gl.clientService.service;
+
+public interface BillGenerationService {
+
+}

@@ -1,0 +1,24 @@
+package com.gl.managementApplication.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.gl.managementApplication.api.ClientApi;
+import com.gl.managementApplication.api.HotelApi;
+
+@RestController
+@RequestMapping("/ordinary")
+public class OrinaryController {
+	@Autowired
+	private HotelApi hotelApi;
+	@Autowired
+	private ClientApi clientApi;
+	@GetMapping("/index")
+	public ModelAndView showIndexPage() {
+		return new ModelAndView("ordinaryIndexPage");
+	}
+	
+}

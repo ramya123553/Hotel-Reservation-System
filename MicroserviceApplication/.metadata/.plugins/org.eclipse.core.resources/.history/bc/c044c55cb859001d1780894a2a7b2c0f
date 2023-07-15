@@ -1,0 +1,19 @@
+package com.gl.managementApplication.api;
+
+import java.util.List;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.gl.hotelUserClient.bean.AccomodationDTO;
+
+@FeignClient(name="HOTEL-SERVICE")
+public interface AccomodationApi {
+	@GetMapping("/accAddition/acc")
+	public void save( AccomodationDTO accomodationDTO);
+	@GetMapping("/accAddition/acc/{id}")
+	public List<AccomodationDTO> findAll();
+	@GetMapping("/accAddition/acc")
+	public AccomodationDTO findByid(String id);
+	
+}

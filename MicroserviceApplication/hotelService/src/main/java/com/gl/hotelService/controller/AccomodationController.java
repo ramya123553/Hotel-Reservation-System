@@ -1,0 +1,41 @@
+package com.gl.hotelService.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.gl.hotelService.bean.AccomodationDTO;
+import com.gl.hotelService.service.AccomodationService;
+
+
+@RestController
+@RequestMapping("/accAddition")
+public class AccomodationController {
+	
+	@Autowired
+	 private AccomodationService accomodationService;
+
+	 @GetMapping(value="/acc",produces=MediaType.APPLICATION_JSON_VALUE)
+	 public List<AccomodationDTO> showAllAccomodation(){
+		 return accomodationService.findAll();
+	 }
+
+	 @GetMapping(value="/acc/{id}",produces=MediaType.APPLICATION_JSON_VALUE)
+	 public AccomodationDTO findById(@PathVariable String id){
+		 return accomodationService.findByid(id);
+	 }
+
+	 @PostMapping(value="/acc",consumes=MediaType.APPLICATION_JSON_VALUE)
+	 public String save(@RequestBody AccomodationDTO accomodationDTO) {
+	 accomodationService.save(accomodationDTO);
+	 	return "Accomodation Added";
+	 }
+
+}

@@ -1,0 +1,77 @@
+package com.gl.managementApplication.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.gl.managementApplication.api.ClientApi;
+import com.gl.managementApplication.bean.BookingDTO;
+
+@RestController
+@RequestMapping("/client")
+public class ClientController {
+	@Autowired
+	private ClientApi clientApi;
+	
+	@GetMapping("/index")
+	public ModelAndView showIndexPage() {
+		return new ModelAndView("clientIndex");
+	}
+	
+	
+	
+	@GetMapping("/client-book")
+	public ModelAndView clientEntryPage() {
+		BookingDTO roomBooking=new BookingDTO();
+		ModelAndView mv=new ModelAndView("clientEntryPage");
+		mv.addObject("bookingRecord",roomBooking);
+		return mv;
+	}
+	
+	@PostMapping("/room-booking")
+	 public ModelAndView clientEntrySave(@ModelAttribute("bookingRecord") BookingDTO roomBooking) {
+		//String str=roomBooking.getContactNumber().trim();
+		//if(str.)
+		clientApi.save(roomBooking);
+		ModelAndView mv= new ModelAndView("clientDisplayPage");
+		List<BookingDTO> bookList=clientApi.findAll();
+		mv.addObject("roomList",bookList);
+		return mv;
+	 }
+	
+	
+	
+	@GetMapping("/client-expenses")
+	public ModelAndView accomodationEntryPage() {
+		Expenses expense=new Expenses();
+		ModelAndView mv=new ModelAndView("expensesEntryPage");
+		mv.addObject("clientExpensesRecord",expense);
+		return mv;
+	}
+	@PostMapping("/client-expenses")
+	public String accomodationSave(@ModelAttribute("clientExpensesRecord") ExpensesDTO clientExpenses) {
+		clientApi.save(clientExpenses);
+		  return "saved";
+	}
+	@GetMapping("/client-expenses/{cnr}")
+	public ModelAndView showdisplayPage(@PathVariable String cnr) {
+		ExpensesDTO clientExpenses=clientExpensesService.findById(cnr);
+		BookingDTO roomBooking=clientApi.findById(cnr);
+		ModelAndView mv=new ModelAndView("expensesDisplayPage");
+		mv.addObject("RoomBooking",roomBooking);
+		mv.addObject("ClientExpenses",clientExpenses);
+		return mv;
+	}
+	/*
+	@ExceptionHandler(value = ContactNumberException.class)
+	public ModelAndView handlingFeeException (ContactNumberException exception) {
+	String message="Invalid Mobile Number";
+	ModelAndView mv=new ModelAndView("errorShow") ;
+	mv.addObject ("errorMessage" ,message) ;
+	return mv;
+	}*/
+}

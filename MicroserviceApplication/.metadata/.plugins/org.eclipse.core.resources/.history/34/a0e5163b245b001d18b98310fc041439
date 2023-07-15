@@ -1,0 +1,5 @@
+package com.gl.clientService.bean;
+
+public class BillGenerationDTO {
+
+}

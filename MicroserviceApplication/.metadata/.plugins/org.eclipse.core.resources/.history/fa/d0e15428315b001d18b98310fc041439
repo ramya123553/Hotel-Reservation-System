@@ -1,0 +1,137 @@
+package com.gl.managementApplication.bean;
+
+import java.util.Date;
+
+public class BillGenerationDTO {
+	private String cnr;
+	private String name;
+	private String address;
+	private String contactNumber;
+	private String hotelId;
+	private String bookingDate;
+	private String checkInDate;
+	private String checkOutDate;
+	private String roomNumber;
+	private Date date;
+	private String roomType;
+	private Double roomAmount;
+	private Double ExpenseAmount;
+	private Double Gst;
+	private Double TotalAmount;
+	public BillGenerationDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public BillGenerationDTO(String cnr, String name, String address, String contactNumber, String hotelId,
+			String bookingDate, String checkInDate, String checkOutDate, String roomNumber, Date date, String roomType,
+			Double roomAmount, Double expenseAmount, Double gst, Double totalAmount) {
+		super();
+		this.cnr = cnr;
+		this.name = name;
+		this.address = address;
+		this.contactNumber = contactNumber;
+		this.hotelId = hotelId;
+		this.bookingDate = bookingDate;
+		this.checkInDate = checkInDate;
+		this.checkOutDate = checkOutDate;
+		this.roomNumber = roomNumber;
+		this.date = date;
+		this.roomType = roomType;
+		roomAmount = roomAmount;
+		ExpenseAmount = expenseAmount;
+		Gst = gst;
+		TotalAmount = totalAmount;
+	}
+		
+	public String getCnr() {
+		return cnr;
+	}
+	public void setCnr(String cnr) {
+		this.cnr = cnr;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getContactNumber() {
+		return contactNumber;
+	}
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
+	}
+	public String getHotelId() {
+		return hotelId;
+	}
+	public void setHotelId(String hotelId) {
+		this.hotelId = hotelId;
+	}
+	public String getBookingDate() {
+		return bookingDate;
+	}
+	public void setBookingDate(String bookingDate) {
+		this.bookingDate = bookingDate;
+	}
+	public String getCheckInDate() {
+		return checkInDate;
+	}
+	public void setCheckInDate(String checkInDate) {
+		this.checkInDate = checkInDate;
+	}
+	public String getCheckOutDate() {
+		return checkOutDate;
+	}
+	public void setCheckOutDate(String checkOutDate) {
+		this.checkOutDate = checkOutDate;
+	}
+	public String getRoomNumber() {
+		return roomNumber;
+	}
+	public void setRoomNumber(String roomNumber) {
+		this.roomNumber = roomNumber;
+	}
+	public Date getDate() {
+		return date;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	public String getRoomType() {
+		return roomType;
+	}
+	public void setRoomType(String roomType) {
+		this.roomType = roomType;
+	}
+	public Double getroomAmount() {
+		return roomAmount;
+	}
+	public void setroomAmount(Double roomAmount) {
+		roomAmount = roomAmount;
+	}
+	public Double getExpenseAmount() {
+		return ExpenseAmount;
+	}
+	public void setExpenseAmount(Double expenseAmount) {
+		ExpenseAmount = expenseAmount;
+	}
+	public Double getGst() {
+		return Gst;
+	}
+	public void setGst(Double gst) {
+		Gst = gst;
+	}
+	public Double getTotalAmount() {
+		return TotalAmount;
+	}
+	public void setTotalAmount(Double totalAmount) {
+		TotalAmount = totalAmount;
+	}
+	
+}

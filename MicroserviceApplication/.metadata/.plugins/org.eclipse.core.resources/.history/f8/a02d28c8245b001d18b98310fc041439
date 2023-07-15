@@ -1,0 +1,9 @@
+package com.gl.clientService.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.gl.clientService.bean.BillGeneration;
+
+public interface BillGenerationRepository implements JpaRepository<BillGeneration, String> {
+
+}

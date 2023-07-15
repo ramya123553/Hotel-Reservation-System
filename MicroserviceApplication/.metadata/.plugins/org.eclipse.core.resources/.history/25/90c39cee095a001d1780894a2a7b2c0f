@@ -1,0 +1,78 @@
+package com.gl.clientService.service;
+
+
+
+import java.util.ArrayList;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+
+import org.springframework.stereotype.Repository;
+
+import org.springframework.stereotype.Service;
+
+import com.gl.clientService.bean.Expenses;
+import com.gl.clientService.bean.ExpensesDTO;
+import com.gl.clientService.dao.ExpensesDao;
+
+
+@Service
+
+@Repository
+
+public class ExpensesServiceImpl implements ExpensesService {
+
+ @Autowired
+
+ private ExpensesDao clientExpensesDao;
+
+ @Override
+
+ public void save(ExpensesDTO clientExpensesDTO) {
+
+  Expenses clientExpenses = new Expenses(clientExpensesDTO);
+
+  clientExpensesDao.save(clientExpenses);
+
+ }
+
+ @Override
+
+ public List<ExpensesDTO> findAll() {
+
+ List<ExpensesDTO> clientList=new ArrayList<>();
+
+ for(Expenses clientExpenses:clientExpensesDao.findAll())
+
+ {
+
+  ExpensesDTO clientExpensesDTO = new ExpensesDTO(clientExpenses);
+
+  clientList.add(clientExpensesDTO);
+
+ }
+
+ return clientList;
+
+ }
+
+ @Override
+
+ public ExpensesDTO findById(String cnr) {
+
+ return new ExpensesDTO(clientExpensesDao.findById(cnr));
+
+ }
+ @Override
+ public Long generateSerialId() {
+	  Long val = repository.findMaxserialId();
+		if(val==null)
+			val=1L;
+		else
+			val=val+1;
+		return val;
+	}
+
+}
+

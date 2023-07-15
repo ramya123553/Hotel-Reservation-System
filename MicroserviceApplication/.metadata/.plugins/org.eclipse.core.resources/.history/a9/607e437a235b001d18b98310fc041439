@@ -1,0 +1,20 @@
+package com.gl.clientService.bean;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class BillGeneration {
+	@Id
+	private String cnr;
+	private String name;
+	private String address;
+	private String contactNumber;
+	private String hotelId;
+	private String bookingDate;
+	private String checkInDate;
+	private String checkOutDate;
+	private String roomNumber;
+	private String roomType;
+	private Double AmountPayable;
+}

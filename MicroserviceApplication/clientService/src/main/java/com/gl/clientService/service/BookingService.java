@@ -1,0 +1,18 @@
+package com.gl.clientService.service;
+
+import java.util.List;
+
+import com.gl.clientService.bean.BookingDTO;
+
+
+
+
+public interface BookingService {
+	public void save(BookingDTO bookingDTO);
+	public List<BookingDTO> findAll();
+	public BookingDTO findById(String cnr);
+	public String GenerateId(BookingDTO bookingdto);
+	public void bookingsavewithexpences(BookingDTO bookingDTO);
+	
+
+}

@@ -1,0 +1,5 @@
+package com.gl.clientService.dao;
+
+public interface BillGenerationDao {
+
+}

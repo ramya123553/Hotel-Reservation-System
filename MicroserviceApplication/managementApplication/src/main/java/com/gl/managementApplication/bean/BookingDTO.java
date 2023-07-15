@@ -1,0 +1,123 @@
+package com.gl.managementApplication.bean;
+
+
+
+public class BookingDTO {
+	
+	private String cnr;
+	private String name;
+	private String address;
+	private String contactNumber;
+	private String gender;
+	private String bookingDate;
+	private String hotelId;
+	private String checkInDate;
+	private String checkOutDate;
+	private String roomNumber;
+	private String payStatus="Pending";
+	private String roomType;
+	private Double AmountPayable;
+	public BookingDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public BookingDTO(String cnr, String name, String address, String contactNumber, String gender, String bookingDate,
+			String hotelId, String checkInDate, String checkOutDate, String roomNumber, String payStatus,
+			String roomType, Double amountPayable) {
+		super();
+		this.cnr = cnr;
+		this.name = name;
+		this.address = address;
+		this.contactNumber = contactNumber;
+		this.gender = gender;
+		this.bookingDate = bookingDate;
+		this.hotelId = hotelId;
+		this.checkInDate = checkInDate;
+		this.checkOutDate = checkOutDate;
+		this.roomNumber = roomNumber;
+		this.payStatus = payStatus;
+		this.roomType = roomType;
+		AmountPayable = amountPayable;
+	}
+
+	public String getCnr() {
+		return cnr;
+	}
+	public void setCnr(String cnr) {
+		this.cnr = cnr;
+	}
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getContactNumber() {
+		return contactNumber;
+	}
+	public void setContactNumber(String contactNumber) {
+		this.contactNumber = contactNumber;
+	}
+	public String getGender() {
+		return gender;
+	}
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+	public String getBookingDate() {
+		return bookingDate;
+	}
+	public void setBookingDate(String bookingDate) {
+		this.bookingDate = bookingDate;
+	}
+	public String getHotelId() {
+		return hotelId;
+	}
+	public void setHotelId(String hotelId) {
+		this.hotelId = hotelId;
+	}
+	public String getCheckInDate() {
+		return checkInDate;
+	}
+	public void setCheckInDate(String checkInDate) {
+		this.checkInDate = checkInDate;
+	}
+	public String getCheckOutDate() {
+		return checkOutDate;
+	}
+	public void setCheckOutDate(String checkOutDate) {
+		this.checkOutDate = checkOutDate;
+	}
+	public String getRoomNumber() {
+		return roomNumber;
+	}
+	public void setRoomNumber(String roomNumber) {
+		this.roomNumber = roomNumber;
+	}
+	public String getPayStatus() {
+		return payStatus;
+	}
+	public void setPayStatus(String payStatus) {
+		this.payStatus = payStatus;
+	}
+	public String getRoomType() {
+		return roomType;
+	}
+	public void setRoomType(String roomType) {
+		this.roomType = roomType;
+	}
+	public Double getAmountPayable() {
+		return AmountPayable;
+	}
+	public void setAmountPayable(Double amountPayable) {
+		AmountPayable = amountPayable;
+	}
+	
+	
+}

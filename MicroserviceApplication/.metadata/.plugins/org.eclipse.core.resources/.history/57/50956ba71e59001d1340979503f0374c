@@ -1,0 +1,43 @@
+package com.gl.HotelServiceApplication.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.gl.HotelServiceApplication.bean.Room;
+import com.gl.HotelServiceApplication.bean.RoomDTO;
+import com.gl.HotelServiceApplication.dao.RoomDao;
+
+@Service
+public class RoomServiceImpl implements RoomService {
+	@Autowired
+	private RoomDao roomDao;
+	
+	@Override
+	public void save(RoomDTO roomDTO) {
+		roomDao.save(new Room(roomDTO));
+	}
+
+	@Override
+	public List<RoomDTO> findAll() {
+		List<RoomDTO>roomList=new ArrayList<>();
+		for(Room room:roomDao.findAll())
+		{
+			RoomDTO roomDTO=new RoomDTO(room);
+			roomList.add(roomDTO);
+		}
+		return roomList;
+	}
+
+	@Override
+	public RoomDTO findById(String id) {
+		return new RoomDTO(roomDao.findById(id));
+	}
+	@Override
+	 public void deleteARoom(String roomId) {
+		//return new RoomDTO(roomDao.deleteARoom(roomId));
+	 }
+
+}

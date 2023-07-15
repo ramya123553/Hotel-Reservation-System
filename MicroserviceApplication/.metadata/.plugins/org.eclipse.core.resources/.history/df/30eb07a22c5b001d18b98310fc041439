@@ -1,0 +1,14 @@
+package com.gl.clientService.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.gl.clientService.service.BillGenerationService;
+
+@RestController
+@RequestMapping("/billGeneration")
+public class BillGenerationController {
+@Autowired
+private BillGenerationService billGenerationService;
+}

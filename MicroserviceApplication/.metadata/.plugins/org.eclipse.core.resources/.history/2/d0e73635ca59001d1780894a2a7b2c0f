@@ -1,0 +1,50 @@
+package com.gl.managementApplication.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.gl.managementApplication.api.ClientApi;
+import com.gl.managementApplication.api.HotelApi;
+import com.gl.managementApplication.bean.BookingDTO;
+
+@RestController
+@RequestMapping("/hotelClient")
+public class hotelClientController {
+@Autowired
+private HotelApi hotelApi;
+@Autowired
+private ClientApi clientApi;
+//@Autowired
+//private ExpensesApi expensesApi;
+@GetMapping("/index")
+public ModelAndView showIndexPage() {
+	return new ModelAndView("clientIndex");
+}
+@GetMapping("/client-book")
+public ModelAndView clientEntryPage() {
+	BookingDTO roomBooking=new BookingDTO();
+	ModelAndView mv=new ModelAndView("clientEntryPage");
+	mv.addObject("bookingRecord",roomBooking);
+	return mv;
+}
+
+@PostMapping("/room-booking")
+ public ModelAndView clientEntrySave(@ModelAttribute("bookingRecord") BookingDTO roomBooking) {
+	String id= clientApi.GenerateId(roomBooking);
+	roomBooking.setCnr(id);
+	//String str=roomBooking.getContactNumber().trim();
+	//if(str.)
+	clientApi.save(roomBooking);
+	ModelAndView mv= new ModelAndView("clientDisplayPage");
+	List<BookingDTO> bookList=clientApi.findAll();
+	mv.addObject("roomList",bookList);
+	return mv;
+ }
+}

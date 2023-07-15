@@ -1,0 +1,12 @@
+package com.gl.HotelServiceApplication.dao;
+
+import java.util.List;
+
+import com.gl.HotelServiceApplication.bean.Accomodation;
+
+public interface AccomodationDao {
+	public void save( Accomodation accomodation);
+	public List<Accomodation> findAll();
+	public Accomodation findByid(String accomId);
+
+}

@@ -1,0 +1,49 @@
+package com.gl.hotelService.dao;
+
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.gl.hotelService.bean.Room;
+
+@Service
+public class RoomDaoImpl implements RoomDao {
+
+	@Autowired
+	private RoomRepository repository;
+
+	 @Override
+	 public void save(Room room) {
+		 repository.save(room);
+	 }
+
+	 @Override
+	 public List<Room> findAll() {
+		 return repository.findAll();
+	 }
+
+	 @Override
+	 public Room findById(String id) {
+	 return repository.getById(id);
+	 }
+	 @Override
+		public String GenerateId(Booking booking) {
+			 String va= booking.getHotelId();//H2
+			String value=repository.findMaxCnr(va);//H21002
+			 
+			  if(value==null) {
+				  value=va+1001L;
+			  }
+			  else {
+				  String sub=value.substring(2);
+				  int v1=Integer.parseInt(sub);
+				  v1++;  
+				  value=va+v1;
+			  }
+			  return value;
+			 }
+	 @Override
+	 public void deleteARoom(String id) {
+		 repository.deleteById(id);
+	 }
+}

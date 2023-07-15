@@ -1,0 +1,52 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" isELIgnored="false"%>
+     <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+    
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>ClientDisplayPage</title>
+</head>
+<body>
+<h1>Client Page</h1>
+<div align="center">
+<h3>
+<h1 style="color:red">
+<u><i>All Accomodations</i></u>
+</h1>
+<br/>
+ <table border="2">
+ <tr>
+     <th>CNR</th>
+    <th>Name</th>
+    <th>Address</th>
+    <th>ContactNo</th>
+    <th>Gender</th>
+    <th>BookingDate</th>
+    <th>CheckinDate</th>
+    <th>CheckoutDate</th>
+    <th>RoomNo</th>
+    <th>Paystatus</th>
+    </tr>
+    <c:forEach items="${roomList}" var="roomBooking">
+      <tr>
+      <td>${roomBooking.cnr}</td>
+      <td>${roomBooking.name}</td>
+      <td>${roomBooking.address}</td>
+      <td>${roomBooking.contactNumber}</td>
+      <td>${roomBooking.gender}</td>
+      <td>${roomBooking.bookingDate}</td>
+      <td>${roomBooking.checkInDate}</td>
+      <td>${roomBooking.checkOutDate}</td>
+      <td>${roomBooking.roomNumber}</td>
+      <td>${roomBooking.payStatus}</td>
+      </tr>
+     </c:forEach>
+  </table>
+</h2>
+<a href="/client/index">Return</a>
+</div>
+
+</body>
+</html>

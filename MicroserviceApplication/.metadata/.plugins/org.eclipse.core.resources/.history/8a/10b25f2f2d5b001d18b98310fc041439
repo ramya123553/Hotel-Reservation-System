@@ -1,0 +1,34 @@
+package com.gl.managementApplication.api;
+
+import java.util.List;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import com.gl.managementApplication.bean.BillGenerationDTO;
+import com.gl.managementApplication.bean.BookingDTO;
+import com.gl.managementApplication.bean.ExpensesDTO;
+@FeignClient(name="CLIENT-SERVICE")
+public interface ClientApi {
+	@PostMapping("/roombooking/clients")
+	public String bookingsave(@RequestBody BookingDTO bookingDTO);
+	@GetMapping("/roombooking/clients")
+	public List<BookingDTO> findAll();
+	@GetMapping("/roombooking/clients/{cnr}")
+	public BookingDTO findBookingById(@PathVariable String cnr);
+	@GetMapping("/roombooking/client")
+	public String bookingsavewithexpences(@RequestBody BookingDTO bookingDTO);
+	@PostMapping("/clientExpenses/expense")
+	public void expensesSave(@RequestBody ExpensesDTO clientExpensesDTO);
+	@GetMapping("/clientExpenses/expense")
+	public List<ExpensesDTO> findAllExpenses();
+	@GetMapping("/clientExpenses/expense/{serialId}")
+	public ExpensesDTO findexpenseById(@PathVariable Long serialId);
+	@GetMapping("/clientExpenses/expenses/{cnr}")
+	public List<ExpensesDTO> findexpBycnr(@PathVariable String cnr);
+	@PostMapping("/billGeneration/bill")
+	public String bookingsavewithexpences(@RequestBody BillGenerationDTO billGenerationDTO);
+}

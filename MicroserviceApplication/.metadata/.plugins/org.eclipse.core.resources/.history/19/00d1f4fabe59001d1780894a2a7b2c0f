@@ -1,0 +1,23 @@
+package com.gl.managementApplication.api;
+
+import java.util.List;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.gl.managementApplication.bean.BookingDTO;
+
+
+@FeignClient(name="USER-SERVICE")
+public interface BookingApi {
+	@GetMapping("/roombooking/clients")
+	public void save(BookingDTO bookingDTO);
+	@GetMapping("/roombooking/clients")
+	public List<BookingDTO> findAll();
+	@GetMapping("/roombooking/clients/{cnr}")
+	public BookingDTO findById(String cnr);
+	@GetMapping("/roombooking/clients")
+	public String GenerateId(BookingDTO bookingdto);
+
+}

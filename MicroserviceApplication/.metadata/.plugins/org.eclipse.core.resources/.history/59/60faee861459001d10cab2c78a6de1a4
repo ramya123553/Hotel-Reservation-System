@@ -1,0 +1,16 @@
+package com.gl.clientServiceApplication.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.gl.clientServiceApplication.bean.Booking;
+
+
+@Repository
+public interface BookingRepository extends JpaRepository<Booking, String> {
+	/*@Query("select count(cnr) from  RoomBooking")
+	public Long findMaxId();*/
+	@Query("select max(cnr) from Booking where cnr like ?1%")
+	public String findMaxRoomId(String cnr);
+}

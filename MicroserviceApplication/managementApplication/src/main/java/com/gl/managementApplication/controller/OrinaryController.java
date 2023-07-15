@@ -1,0 +1,99 @@
+package com.gl.managementApplication.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.gl.managementApplication.api.ClientApi;
+import com.gl.managementApplication.api.HotelApi;
+import com.gl.managementApplication.bean.ExpensesDTO;
+import com.gl.managementApplication.bean.HotelDTO;
+import com.gl.managementApplication.bean.RoomDTO;
+
+@RestController
+@RequestMapping("/ordinary")
+public class OrinaryController {
+	@Autowired
+	private HotelApi hotelApi;
+	@Autowired
+	private ClientApi clientApi;
+	@GetMapping("/index")
+	public ModelAndView showIndexPage() {
+		return new ModelAndView("ordinaryIndexPage");
+	}
+	@GetMapping("/room-addition")
+	public ModelAndView showRoomPage() {
+	RoomDTO room=new RoomDTO();
+	ModelAndView mv=new ModelAndView("roomEntryPage");
+	mv.addObject("roomRecord",room);
+	return mv;
+ }
+ @PostMapping("/room-addition")
+ public ModelAndView roomSave(@ModelAttribute("roomRecord") RoomDTO room) {
+	 hotelApi.saveRoom(room);
+	 return new ModelAndView("redirect:/super/room-display");
+ }
+
+ @GetMapping("/room-display")
+ public ModelAndView roomDisplayPage() {
+	 ModelAndView mv=new ModelAndView("roomDisplayPage");
+	 List<RoomDTO> roomList=hotelApi.showAllRooms();
+	 mv.addObject("roomList",roomList);
+	 return mv;
+ }
+ @DeleteMapping("/room-delete/{id}")
+ public ModelAndView deleteARoom(@PathVariable String id) {
+	 hotelApi.deleteRoomById(id);
+	 return new ModelAndView("redirect:/super/room-display");
+ }
+ @GetMapping("/hotel-entry")
+ public ModelAndView showHotelPage() {
+	 HotelDTO hotel=new HotelDTO();
+	 ModelAndView mv=new ModelAndView("hotelEntryPage");
+	 mv.addObject("hotelRecord",hotel);
+	return mv;
+ }
+ 
+ @PostMapping("/hotel-addition")
+ public ModelAndView hotelSave(@ModelAttribute("hotelRecord") HotelDTO hotel) {
+	
+	 hotelApi.saveHotel(hotel);
+	 return new ModelAndView("redirect:/super/hotel-display");
+ }
+ @GetMapping("/hotel-display")
+ public ModelAndView hotelDisplayPage() {
+	 ModelAndView mv=new ModelAndView("hotelDisplayPage");
+	 List<HotelDTO> hotelList=hotelApi.findAllHotels();
+	 mv.addObject("hotelList", hotelList);
+	 return mv;
+ }
+ @GetMapping("/hotel-delete/{id}")
+ public ModelAndView deleteAHotel(@PathVariable String id) {
+	 hotelApi.deleteHotel(id);
+	 return new ModelAndView("redirect:/super/hotel-display");
+ }
+ @GetMapping("/client-expenses")
+	public ModelAndView ExpensesEntryPage() {
+		ExpensesDTO expense=new ExpensesDTO();
+		ModelAndView mv=new ModelAndView("expensesEntryPage");
+		mv.addObject("clientExpensesRecord",expense);
+		return mv;
+	}
+	@PostMapping("/client-expenses")
+	public ModelAndView ExpensesSave(@ModelAttribute("clientExpensesRecord") ExpensesDTO clientExpenses) {
+		clientApi.expensesSave(clientExpenses);
+		  ModelAndView mv= new ModelAndView("expensesDisplayPage");
+		  List<ExpensesDTO> expensesList=clientApi.findAllExpenses();
+			mv.addObject("expensesList",expensesList);
+			return mv;
+	}
+	
+}

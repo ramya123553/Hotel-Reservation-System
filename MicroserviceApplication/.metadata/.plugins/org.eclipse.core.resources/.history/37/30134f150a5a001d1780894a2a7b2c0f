@@ -1,0 +1,46 @@
+package com.gl.clientService.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.gl.clientService.bean.ExpensesDTO;
+import com.gl.clientService.service.ExpensesService;
+
+
+@RestController
+@RequestMapping("clientExpenses")
+public class ExpensesController {
+	@Autowired
+	private ExpensesService clientExpensesService ;
+	
+	@GetMapping(value="/expense",produces=MediaType.APPLICATION_JSON_VALUE)
+	public List<ExpensesDTO> findAll()	
+	{
+		return  clientExpensesService.findAll();
+	}
+	
+	@GetMapping(value="/expense/{cnr}",produces=MediaType.APPLICATION_JSON_VALUE)
+	public ExpensesDTO findById(@PathVariable String cnr)	
+	{
+		return  clientExpensesService.findById(cnr);
+	}
+	
+	
+	@PostMapping(value="/expense",consumes=MediaType.APPLICATION_JSON_VALUE)
+	public String save(@RequestBody ExpensesDTO clientExpensesDTO)	
+	{
+		clientExpensesService.save(clientExpensesDTO);;
+		return "Expense saved";
+	}
+	
+}
+
+

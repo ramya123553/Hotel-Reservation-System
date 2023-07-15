@@ -1,0 +1,39 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1" isELIgnored="false" %>
+    <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div align="center">
+  <h2>
+	 Name:${book.authorName}
+	<br/><br/>
+	 Address:${book.bookPrice}
+	<br/><br/>Details
+	<br/><br/>
+<table border="2">
+  <tr>
+   <th>CNR. No.</th>
+	<th>Name</th>
+	<th>Room Id</th>
+	<th>CheckIn Date</th>
+	<th>CheckOut Date</th>
+	<th>AmountRoom</th>
+	<th>AmounExpenses</th>
+	<th>Gst</th>
+	<th>Total</th>
+	</tr>
+    <c:forEach  items="${billList}" var="bill">
+      <tr>
+      <td>${review.reviewerName}</td>
+      <td>${review.comment}</td>
+     </tr>
+     </c:forEach>
+  </h2>
+</div>
+</body>
+</html>

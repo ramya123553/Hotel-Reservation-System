@@ -1,0 +1,50 @@
+package com.gl.clientService.bean;
+
+import java.util.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class BillGeneration {
+	@Id
+	private String cnr;
+	private String name;
+	private String address;
+	private String contactNumber;
+	private String hotelId;
+	private String bookingDate;
+	private String checkInDate;
+	private String checkOutDate;
+	private String roomNumber;
+	private Date date;
+	private String roomType;
+	private Double RoomAmount;
+	private Double ExpenseAmount;
+	private Double Gst;
+	private Double TotalAmount;
+	public BillGeneration() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public BillGeneration(String cnr, String name, String address, String contactNumber, String hotelId,
+			String bookingDate, String checkInDate, String checkOutDate, String roomNumber, String roomType,
+			Double roomAmount, Double expenseAmount, Double gst, Double totalAmount) {
+		super();
+		this.cnr = cnr;
+		this.name = name;
+		this.address = address;
+		this.contactNumber = contactNumber;
+		this.hotelId = hotelId;
+		this.bookingDate = bookingDate;
+		this.checkInDate = checkInDate;
+		this.checkOutDate = checkOutDate;
+		this.roomNumber = roomNumber;
+		this.roomType = roomType;
+		RoomAmount = roomAmount;
+		ExpenseAmount = expenseAmount;
+		Gst = gst;
+		TotalAmount = totalAmount;
+	}
+	
+}

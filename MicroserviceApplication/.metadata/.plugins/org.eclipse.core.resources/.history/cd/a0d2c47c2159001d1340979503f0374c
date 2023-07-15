@@ -1,0 +1,48 @@
+package com.gl.hotelService.controller;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.gl.hotelService.bean.HotelDTO;
+import com.gl.hotelService.service.HotelService;
+
+@RestController
+@RequestMapping("Hoteladd")
+public class HotelController {
+	
+	@Autowired
+	private HotelService service;
+	
+	@GetMapping(value="/hotel",produces=MediaType.APPLICATION_JSON_VALUE)
+	 public List<HotelDTO> showAllHotel(){
+		return service.findAll();
+	 }
+
+	 @GetMapping(value="/hotel/{id}",produces=MediaType.APPLICATION_JSON_VALUE)
+	 public HotelDTO findById(@PathVariable String id){
+		 return service.findById(id);
+	 }
+
+	 @PostMapping(value="/hotel",consumes=MediaType.APPLICATION_JSON_VALUE)
+	 public String save(@RequestBody HotelDTO hotelDTO) {
+		 service.save(hotelDTO);
+		 return "Hotel Added";
+
+	 }
+	 @DeleteMapping(value="/hotel/{id}",produces =MediaType.APPLICATION_JSON_VALUE)
+	 public String deleteById(@PathVariable String id){
+		 return service.findById(id);
+	 }
+
+	 }
+
+}

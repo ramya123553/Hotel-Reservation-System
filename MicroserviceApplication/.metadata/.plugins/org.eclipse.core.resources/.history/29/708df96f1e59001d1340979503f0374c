@@ -1,0 +1,37 @@
+package com.gl.HotelServiceApplication.service;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.gl.HotelServiceApplication.bean.Accomodation;
+import com.gl.HotelServiceApplication.bean.AccomodationDTO;
+import com.gl.HotelServiceApplication.dao.AccomodationDao;
+
+@Service
+public class AccomodationServiceImpl implements AccomodationService {
+	@Autowired
+	private AccomodationDao accomodationDao;
+	
+	@Override
+	public void save(AccomodationDTO accomodationDTO) {
+		accomodationDao.save( new Accomodation(accomodationDTO));
+	}
+	
+	@Override
+	public List<AccomodationDTO> findAll() {
+		List<AccomodationDTO> accList=new ArrayList<>();
+		for(Accomodation ac:accomodationDao.findAll()) {
+			accList.add(new AccomodationDTO(ac));
+		}
+		return accList;
+	}
+
+	@Override
+	public AccomodationDTO findByid(String id) {
+		return new AccomodationDTO(accomodationDao.findByid(id));
+	}
+
+}

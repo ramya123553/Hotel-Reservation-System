@@ -1,0 +1,44 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+  pageEncoding="ISO-8859-1" isELIgnored="false"%>
+  <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div align="center">
+<h3>
+<h1 style="color:red">
+<u><i>Client_Services</i></u>
+</h1>
+
+	<br/><br/>
+	 NAME:${RoomBooking.name}
+	<br/><br/>
+	 GENDER:${RoomBooking.gender}
+	<br/><br/>
+	 PHONE NUMBER:${RoomBooking.contactNumber}
+	<br/><br/>
+	 CHECKIN DATE:${RoomBooking.checkInDate}
+	<br/><br/>
+	 CHCKOUT DATE:${RoomBooking.checkOutDate}
+	 <br/><br/>
+	 ROOM NUMBER:${RoomBooking.roomNumber}
+	 <br/><br/>
+	 SERVICE TYPE:${ClientExpenses.serviceType}
+	 <br/><br/>
+	 AMOUNT EXPENSES:${ClientExpenses.amount}
+	 <br/><br/>
+	 EXPENSES DATE:${ClientExpenses.date}
+	 <br/><br/>
+	 <a href="/index">Return</a>
+	 
+	 
+
+</h3>
+</div>
+</body>
+</html>
+

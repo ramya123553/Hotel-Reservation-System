@@ -1,0 +1,13 @@
+package com.gl.clientService.service;
+
+import com.gl.clientService.bean.BillGeneration;
+
+public class BillGenerationServiceImpl implements BillGenerationService {
+
+	@Override
+	public void save(BillGeneration billGeneration) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

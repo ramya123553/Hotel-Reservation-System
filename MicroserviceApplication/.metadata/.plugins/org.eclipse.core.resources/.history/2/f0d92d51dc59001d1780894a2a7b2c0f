@@ -1,0 +1,39 @@
+package com.gl.managementApplication.api;
+
+import java.util.List;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+
+import com.gl.managementApplication.bean.AccomodationDTO;
+import com.gl.managementApplication.bean.HotelDTO;
+import com.gl.managementApplication.bean.RoomDTO;
+@FeignClient(name="HOTEL-SERVICE")
+public interface HotelApi {
+	@GetMapping("/accAddition/acc")
+	public void save( AccomodationDTO accomodationDTO);
+	@GetMapping("/accAddition/acc/{id}")
+	public List<AccomodationDTO> findAllAccomodations();
+	@GetMapping("/accAddition/acc")
+	public AccomodationDTO findByid(String id);
+	@GetMapping("/Hoteladd/hotel")
+	 public void save(HotelDTO hotelDTO);
+	 @GetMapping("/Hoteladd/hotel/{id}")
+	 public void delete(String id);
+	 @GetMapping("/Hoteladd/hotel")
+	 public List<HotelDTO> findAllHotels();
+	 @GetMapping("/Hoteladd/hotel/{id}")
+	 public HotelDTO findHotelById(String id);
+	 @GetMapping("/Hoteladd/hotel")
+	 public String GenerateHotelId();
+	 @GetMapping("/roomaddition/room")
+	 public void save(RoomDTO roomDTO);
+		@GetMapping("/roomaddition/room")
+		public List<RoomDTO> findAll();
+		@GetMapping("/roomaddition/room/{id}")
+		public RoomDTO findById(String id);
+		@GetMapping("/roomaddition/room/{id}")
+		public void deleteARoom(String roomId);
+		@GetMapping("/roomaddition/room")
+		public String GenerateRoomId(RoomDTO roomDTO);
+}

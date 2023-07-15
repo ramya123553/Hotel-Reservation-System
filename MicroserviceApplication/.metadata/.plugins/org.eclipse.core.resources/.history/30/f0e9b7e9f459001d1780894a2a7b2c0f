@@ -1,0 +1,42 @@
+package com.gl.managementApplication.api;
+
+import java.util.List;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import com.gl.managementApplication.bean.AccomodationDTO;
+import com.gl.managementApplication.bean.HotelDTO;
+import com.gl.managementApplication.bean.RoomDTO;
+@FeignClient(name="HOTEL-SERVICE")
+public interface HotelApi {
+	@PostMapping("/accAddition/acc")
+	public void save(@RequestBody AccomodationDTO accomodationDTO);
+	@GetMapping("/accAddition/acc")
+	public List<AccomodationDTO> showAllAccomodations();
+	@GetMapping("/accAddition/acc/{id}")
+	public AccomodationDTO findByid(@PathVariable String id);
+	
+	@PostMapping("/Hoteladd/hotel")
+	 public void saveHotel(@RequestBody HotelDTO hotelDTO);
+	 @GetMapping("/Hoteladd/hotel/{id}")
+	 public void deleteHotel(@PathVariable String id);
+	 @GetMapping("/Hoteladd/hotel")
+	 public List<HotelDTO> findAllHotels();
+	 @GetMapping("/Hoteladd/hotel/{id}")
+	 public HotelDTO findHotelById(@PathVariable String id);
+	 
+	 
+	 @PostMapping("/roomaddition/room")
+	 public void saveRoom(RoomDTO roomDTO);
+		@GetMapping("/roomaddition/room")
+		public List<RoomDTO> showAllRooms();
+		@GetMapping("/roomaddition/room/{id}")
+		public RoomDTO findRoomById(String id);
+		@GetMapping("/roomaddition/room/{id}")
+		public void deleteRoomById(String roomId);
+}

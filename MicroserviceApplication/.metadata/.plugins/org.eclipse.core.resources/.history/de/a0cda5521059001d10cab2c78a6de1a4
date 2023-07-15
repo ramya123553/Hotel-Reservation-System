@@ -1,0 +1,22 @@
+package com.gl.hotelService.dao;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.gl.HotelServiceApplication.bean.Room;
+ 
+
+@Repository
+public interface RoomRepository extends JpaRepository<Room, String> {
+
+	 @Query("select max(roomId) from Room where room_id like ?1%")
+	public String findMaxRoomId(String hotelId); 
+	 
+	@Query("select max(roomId) from Room")
+	public String findMaxCourseId();
+	
+/*	@Query(value="DELETE FROM room WHERE room_id = ?1", nativeQuery=true)
+	public void deleteRoleFromUsersWithRole(String roomId); */
+	 
+}

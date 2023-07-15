@@ -1,0 +1,7 @@
+package com.gl.clientService.dao;
+
+import com.gl.clientService.bean.Booking;
+
+public interface BillGenerationDao {
+	public void save(Booking booking);
+}
